@@ -1,1 +1,6 @@
-towerOfHanoi(n - 1, aux_rod, to_rod, from_rod);
+Preorder(root);
+    // cout << endl;
+    // inOrder(root);
+    // cout << endl;
+    // PostOrder(root);
+    // cout << endl;
