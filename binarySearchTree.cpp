@@ -59,13 +59,33 @@ Node *insertBst(Node *root, int val)
     }
     return root;
 }
+Node *searchInBst(Node *root, int key)
+{
+    if (root == NULL)
+    {
+        return NULL;
+    }
+    if (root->data == key)
+    {
+        return root;
+    }
+
+    if (root->data > key)
+    {
+        return searchInBst(root->left, key);
+    }
+    else
+    {
+        return searchInBst(root->right, key);
+    }
+}
 
 int main()
 {
-    struct Node *root=NULL;
-    root=insertBst(root,2);
-    insertBst(root,1);
-    insertBst(root,3);
+    struct Node *root = NULL;
+    root = insertBst(root, 2);
+    insertBst(root, 1);
+    insertBst(root, 3);
 
     inOrder(root);
 
