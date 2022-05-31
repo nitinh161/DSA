@@ -126,16 +126,36 @@ Node *deleteInBst(Node *root, int key)
     root->right = deleteInBst(root->left, temp->data);
     return root;
 }
-
+bool isBst(Node *root, Node *min, Node *max)
+{
+    if (root == NULL)
+    {
+        return true;
+    }
+    if (min != NULL && root->data <= min->data)
+    {
+        return false;
+    }
+    if (max != NULL && root->data >= max->data)
+    {
+        return false;
+    }
+    bool leftValid = isBst(root->left, min, root);
+    bool rightValid = isBst(root->right, root, max);
+    return leftValid && rightValid;
+}
 int main()
 {
     struct Node *root = NULL;
     root = insertBst(root, 2);
     insertBst(root, 1);
     insertBst(root, 3);
-
-    deleteInBst(root,3);
-    inOrder(root);
+    if (isBst(root, NULL, NULL))
+    {
+        cout << "valid Bst" << endl;
+    }
+    else
+        cout << "invalid bst" << endl;
 
     return 0;
 }
